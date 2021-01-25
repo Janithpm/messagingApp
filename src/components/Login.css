@@ -1,0 +1,32 @@
+.login{
+    background: #192946;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    color: white;
+}
+
+.loginApp > div > img{
+    object-fit: contain;
+    height: 150px;
+}
+
+.loginApp > h2{
+    padding: 20px;
+    padding-left: 0;
+
+}
+
+.loginApp > Button {
+    width: 300px;
+    color: white;
+    background-color: rgb(2,150,190);
+}
+
+.loginApp > Button:hover{
+    color:rgb(2,150,190);
+    background-color: white;
+}

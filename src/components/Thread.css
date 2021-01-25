@@ -1,0 +1,85 @@
+.thread{
+    flex: 0.70;
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    color: white;
+    
+}
+
+.threadHeader{
+    display: flex;
+    border-bottom: 1px solid rgba(190,190,190,0.2);
+    align-content: center;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.threadHeaderContent{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 10px;
+
+}
+.threadHeaderContentInfo{
+    padding-left: 20px;
+}
+.threadHeaderContentInfo > h5{
+    font-weight: 500;
+    color: gray;
+}
+
+.threadHeaderDetails{
+    color: white;
+}
+
+.threadHeaderDetails:hover{
+    color: rgb(2,150,199);
+}
+
+.threadMessage{
+    flex: 1;
+    overflow: scroll;
+}
+
+.threadMessage::-webkit-scrollbar{
+    display: none;
+}
+
+.threadInput{
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: transparent;
+    border-top: 1px solid rgba(190,190,190,0.1);
+}
+
+.threadInput > form{
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+}
+
+.threadInput > form > input{
+    width: 98%;
+    outline-width: 0;
+    border: none;
+    border-radius: 0;
+    background-color: transparent;
+    padding: 5px;
+    color: white;
+}
+
+.threadInput > form  > Button{
+    /* background-color: transparent; */
+    color: white;
+    /* padding: 5px 10px; */
+    /* border: none; */
+}
+
+.threadInput > form > Button:hover{
+    color: rgb(2, 150, 190);
+}
