@@ -11,7 +11,6 @@ function Login() {
     return (
         <div className='login'>
             <div className='loginApp'>
-                <img></img>
                 <h2>MsgApp</h2>
                 <Button onClick={signIn}>Sign In</Button>
             </div>            

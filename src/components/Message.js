@@ -12,7 +12,7 @@ function Message({id, data}) {
             <Avatar src={data.photo} className='messagePhoto'/>
             <div className='messageContent'>
                 <p>{data.message}</p>
-                <small>timestamp</small>            
+                <small>{new Date(data.timestamp?.toDate()).toLocaleString()}</small>            
             </div>
         </div>
     )

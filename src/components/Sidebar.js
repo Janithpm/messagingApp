@@ -6,11 +6,11 @@ import SidebarThread from './SidebarThread'
 import './Sidebar.css'
 import { PhoneOutlined, QuestionAnswerOutlined, Settings } from '@material-ui/icons'
 import db, {auth} from '../Firebase'
-import {useSelector} from 'react-redux'
-import {selectUser} from '../features/counter/userSlice'
+// import {useSelector} from 'react-redux'
+// import {selectUser} from '../features/counter/userSlice'
 function Sidebar() {
 
-    const user = useSelector(selectUser)
+    // const user = useSelector(selectUser)
     const [threads, setThreads] = useState([])
 
     useEffect(()=>{

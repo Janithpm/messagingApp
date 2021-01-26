@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import './Thread.css'
 import { Avatar, IconButton } from '@material-ui/core'
 import MoreHoriz from '@material-ui/icons/MoreHoriz'
@@ -18,11 +18,14 @@ const Thread = () => {
     const threadName = useSelector(selectThreadName)
     const user = useSelector(selectUser)
 
+    const dummy = useRef()
 
     const sendMessage =(e) => {
+
+
         e.preventDefault()
         db.collection('threads').doc(threadId).collection('messages').add({
-            // timestamp:firebase.firestore.FieldVlue.serverTimestamp(),
+            timestamp:firebase.firestore.FieldValue.serverTimestamp(),
             message:input,
             uid:user.uid,
             photo:user.photo,
@@ -32,11 +35,12 @@ const Thread = () => {
         })
 
         setInput('')
+        dummy.current.scrollIntoView()
     }
 
     useEffect(()=>{
         if(threadId){
-           db.collection('threads').doc(threadId).collection('messages')
+           db.collection('threads').doc(threadId).collection('messages').orderBy('timestamp', 'desc')
            .onSnapshot((snapshot)=> setMessages(
                snapshot.docs.map((doc)=>({
                    id:doc.id,
@@ -46,7 +50,6 @@ const Thread = () => {
         }
     },[threadId])
 
-    console.log(messages)
     return (
             <div className='thread'>
                 <div className='threadHeader'>
@@ -69,6 +72,7 @@ const Thread = () => {
                         )
                     })}
                 </div>
+                <div ref={dummy}></div>
                 <div className='threadInput'>
                     <form>
                     <input placeholder='write a message...' type='textarea'value={input} onChange={(e)=>setInput(e.target.value)}></input>

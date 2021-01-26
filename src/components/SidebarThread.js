@@ -5,19 +5,18 @@ import {useState, useEffect} from 'react'
 import './SidebarThread.css'
 import {useDispatch} from 'react-redux'
 import db from '../Firebase'
-import firebase from 'firebase'
 import {setThread} from '../features/counter/threadSlice'
 
 
 const SidebarThread = ({id, threadName}) => {
 
     const dispatch = useDispatch()
-    const [threadInfo, setThreadInfo] = useState()
+    const [threadInfo, setThreadInfo] = useState([])
     useEffect(()=>{
         db.collection('threads')
         .doc(id)
         .collection('messages')
-        // .orderBy('timestamp', 'desc')
+        .orderBy('timestamp', 'desc')
         .onSnapshot((snapshot)=>
             setThreadInfo(snapshot.docs.map((doc)=>doc.data()))
         )
@@ -31,11 +30,11 @@ const SidebarThread = ({id, threadName}) => {
                 })
             )
         }>
-            <Avatar/>
+            <Avatar src={threadInfo[0]?.photo}/>
             <div className='sidebarThread__details'>
                 <h3>{threadName}</h3>
-                <p>{id}</p>
-                <small className='sidebarThread__timestamp'>timestamp</small>
+                <p>{threadInfo[0]?.email}</p>
+                <small className='sidebarThread__timestamp'>{new Date(threadInfo[0]?.timestamp?.toDate()).toLocaleString()}</small>
             </div>
         </div>
     )
